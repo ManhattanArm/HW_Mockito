@@ -7,11 +7,17 @@ public class PosterManager {
     private final int defaultLastFilmsLength = 5;
     private int userLastFilmsLength;
 
-    public PosterManager() {
-    }
-
+    public PosterManager() {}
     public PosterManager(int userLastFilmsLength) {
         this.userLastFilmsLength = userLastFilmsLength;
+    }
+
+    public int getDefaultLastFilmsLength() {
+        return defaultLastFilmsLength;
+    }
+
+    public int getUserLastFilmsLength() {
+        return userLastFilmsLength;
     }
 
     public void addFilm(Film film) {
@@ -28,13 +34,17 @@ public class PosterManager {
     }
 
     public Film[] findLast() {
-        if (userLastFilmsLength > films.length || userLastFilmsLength <= 0) {
-            userLastFilmsLength = defaultLastFilmsLength;
+        int tmpLastLength;
+
+        if (userLastFilmsLength < films.length && userLastFilmsLength > 0) {
+            tmpLastLength = getUserLastFilmsLength();
+        } else {
+            tmpLastLength = getDefaultLastFilmsLength();
         }
 
-        Film[] lastFilms = new Film[userLastFilmsLength];
+        Film[] lastFilms = new Film[tmpLastLength];
 
-        for (int i = 0; i < userLastFilmsLength; i++) {
+        for (int i = 0; i < tmpLastLength; i++) {
             lastFilms[i] = films[films.length - 1 - i];
         }
         return lastFilms;
