@@ -60,7 +60,7 @@ public class PosterManagerTest {
         posterRepo.addFilm(film7);
         posterRepo.findLast();
 
-        Film[] expected = {film7, film6, film5, film4, film3};
+        Film[] expected = {film7, film6, film5, film4, film3, film2, film1};
         Film[] actual = posterRepo.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
