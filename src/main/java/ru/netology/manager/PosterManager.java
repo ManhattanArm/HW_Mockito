@@ -4,20 +4,17 @@ import ru.netology.film.Film;
 
 public class PosterManager {
     private Film[] films = new Film[0];
-    private final int defaultLastFilmsLength = 5;
-    private int userLastFilmsLength;
+    private int lastFilmsLength;
 
-    public PosterManager() {}
+    public PosterManager() {
+    }
+
     public PosterManager(int userLastFilmsLength) {
-        this.userLastFilmsLength = userLastFilmsLength;
+        this.lastFilmsLength = userLastFilmsLength;
     }
 
-    public int getDefaultLastFilmsLength() {
-        return defaultLastFilmsLength;
-    }
-
-    public int getUserLastFilmsLength() {
-        return userLastFilmsLength;
+    public int getLastFilmsLength() {
+        return lastFilmsLength;
     }
 
     public void addFilm(Film film) {
@@ -34,12 +31,10 @@ public class PosterManager {
     }
 
     public Film[] findLast() {
-        int tmpLastLength;
+        int tmpLastLength = 5;
 
-        if (userLastFilmsLength < films.length && userLastFilmsLength > 0) {
-            tmpLastLength = getUserLastFilmsLength();
-        } else {
-            tmpLastLength = getDefaultLastFilmsLength();
+        if (lastFilmsLength < films.length && lastFilmsLength > 0) {
+            tmpLastLength = getLastFilmsLength();
         }
 
         Film[] lastFilms = new Film[tmpLastLength];
